@@ -1,0 +1,391 @@
+$slide_bar_width: 0 /* 展开宽度*/
+$slide_bar_close_width: -400px /* 关闭宽度*/
+$orange-liner: linear-gradient(to right,#fe9365,#feb798)
+$green-liner: linear-gradient(to right,#0ac282,#0df3a3)
+$red-liner: linear-gradient(to right,#fe5d70,#fe909d)
+$blue-liner: linear-gradient(to right,#01a9ac,#01dbdf)
+$background-color: rgba(255, 255, 255, 0.3) /*rgba(0, 0, 0, 0.2) rgba(255, 255, 255, 0.2)*/
+$main_color: #f6f7fb
+$indigo_color: #6610f2
+$purple_color: #6f42c1
+$pink_color: #e83e8c
+$orange_color: #fd7e14
+$teal_color: #20c997
+$white_color: #fff
+$primary_color: #007bff
+$secondary_color: #6c757d
+$success_color: #28a745
+$info_color: #17a2b8
+$warning_color: #ffc107
+$danger_color: #dc3545
+$light_color: #f8f9fa
+$dark_color: #343a40
+$rectangle: 0
+$roundedRectangle: 1.5em
+$halfRoundedRectangle: 1.5em 0 1.5em 0
+@mixin set_slide_Bar_width($slideBarWidth)
+  right: $slideBarWidth
+  [is_show_slide_bar= 'true'] &
+    right: $slide_bar_width
+  [is_show_slide_bar= 'false'] &
+    right: $slide_bar_close_width
+
+@mixin set_main_layout_head_brand_color($headBrandColor)
+  background-color: $headBrandColor
+  [main_layout_head_brand_color= 'indigo'] &
+    background-color: $indigo_color
+  [main_layout_head_brand_color= 'purple'] &
+    background-color: $purple_color
+  [main_layout_head_brand_color= 'pink'] &
+    background-color: $pink_color
+  [main_layout_head_brand_color= 'indigo'] &
+    background-color: $indigo_color
+  [main_layout_head_brand_color= 'orange'] &
+    background-color: $orange_color
+  [main_layout_head_brand_color= 'teal'] &
+    background-color: $teal_color
+  [main_layout_head_brand_color= 'white'] &
+    background-color: $white_color
+  [main_layout_head_brand_color= 'primary'] &
+    background-color: $primary_color
+  [main_layout_head_brand_color= 'secondary'] &
+    background-color: $secondary_color
+  [main_layout_head_brand_color= 'success'] &
+    background-color: $success_color
+  [main_layout_head_brand_color= 'info'] &
+    background-color: $info_color
+  [main_layout_head_brand_color= 'warning'] &
+    background-color: $warning_color
+  [main_layout_head_brand_color= 'danger'] &
+    background-color: $danger_color
+  [main_layout_head_brand_color= 'light'] &
+    background-color: $light_color
+  [main_layout_head_brand_color= 'dark'] &
+    background-color: $dark_color
+
+@mixin set_main_layout_head_color($headColor)
+  background-color: $headColor
+  [main_layout_head_color= 'indigo'] &
+    background-color: $indigo_color
+  [main_layout_head_color= 'purple'] &
+    background-color: $purple_color
+  [main_layout_head_color= 'pink'] &
+    background-color: $pink_color
+  [main_layout_head_color= 'indigo'] &
+    background-color: $indigo_color
+  [main_layout_head_color= 'orange'] &
+    background-color: $orange_color
+  [main_layout_head_color= 'teal'] &
+    background-color: $teal_color
+  [main_layout_head_color= 'white'] &
+    background-color: $white_color
+  [main_layout_head_color= 'primary'] &
+    background-color: $primary_color
+  [main_layout_head_color= 'secondary'] &
+    background-color: $secondary_color
+  [main_layout_head_color= 'success'] &
+    background-color: $success_color
+  [main_layout_head_color= 'info'] &
+    background-color: $info_color
+  [main_layout_head_color= 'warning'] &
+    background-color: $warning_color
+  [main_layout_head_color= 'danger'] &
+    background-color: $danger_color
+  [main_layout_head_color= 'light'] &
+    background-color: $light_color
+  [main_layout_head_color= 'dark'] &
+    background-color: $dark_color
+
+@mixin set_main_layout_menu_color($mainLayoutColor)
+  //background-color: $mainLayoutColor
+  [main_layout_menu_color= 'white'] &
+    li
+      span
+        color: $dark_color
+        &:hover
+          background: rgba(0, 0, 0, 0.2)
+      .active
+        background: rgba(0, 0, 0, 0.2)
+        .thirdLevelItem
+          &:hover
+            color: $white_color
+  [main_layout_menu_color= 'black'] &
+    background: linear-gradient(to right, #404E67 0%, #596067 100%)
+    li
+      span
+        color: $light_color
+        &:hover
+          color: $white_color
+          background: $background-color
+      .active
+        color: $light_color
+        background: $background-color
+        .thirdLevelItem
+          &:hover
+            color: $dark_color
+  [main_layout_menu_color= 'primary'] &
+    background: linear-gradient(to right, $primary_color 0%, #2196f3 100%)
+    li
+      span
+        color: $light_color
+        &:hover
+          color: $light_color
+          background: $background-color
+      .active
+        color: $light_color
+        background: $background-color
+        .thirdLevelItem
+          &:hover
+            color: $primary_color
+  [main_layout_menu_color= 'info'] &
+    background: linear-gradient(to right, rgba(8,155,171,1) 0%, rgba(13,181,200,1) 100%)
+    li
+      span
+        color: $light_color
+        &:hover
+          color: $light_color
+          background: $background-color
+      .active
+        color: $light_color
+        background: $background-color
+        .thirdLevelItem
+          &:hover
+            color: $info_color
+@mixin set_main_layout_menuItem_style($menuItemBorderRadius)
+  li
+    span
+      &:hover
+        border-radius: $menuItemBorderRadius
+        [main_layout_menuItem_style= 'rectangle'] &
+          border-radius: $rectangle
+        [main_layout_menuItem_style= 'roundedRectangle'] &
+          border-radius: $roundedRectangle
+        [main_layout_menuItem_style= 'halfRoundedRectangle'] &
+          border-radius: $halfRoundedRectangle
+    .active
+        border-radius: $menuItemBorderRadius
+        [main_layout_menuItem_style= 'rectangle'] &
+          border-radius: $rectangle
+        [main_layout_menuItem_style= 'roundedRectangle'] &
+          border-radius: $roundedRectangle
+        [main_layout_menuItem_style= 'halfRoundedRectangle'] &
+          border-radius: $halfRoundedRectangle
+
+@mixin set_main_layout_table_color($mainLayoutTableHeadColor)
+  background-color: $mainLayoutTableHeadColor
+  //[main_layout_table_style = 'blue'] &
+  //  background-color: $blue_color
+  //  color: #fafafa
+  [main_layout_table_style= 'indigo'] &
+    background-color: $indigo_color
+    color: #fafafa
+  [main_layout_table_style= 'purple'] &
+    background-color: $purple_color
+    color: #fafafa
+  [main_layout_table_style = 'pink'] &
+    background-color: $pink_color
+    color: #fafafa
+  [main_layout_table_style= 'orange'] &
+    background-color: $orange_color
+    color: #fafafa
+  [main_layout_table_style= 'teal'] &
+    background-color: $green-liner
+    color: #fafafa
+  [main_layout_table_style= 'white'] &
+    background-color: $white_color
+    color: #6c757d
+  [main_layout_table_style= 'primary'] &
+    background-color: $primary_color
+    color: #fafafa
+  [main_layout_table_style= 'secondary'] &
+    background-color: $secondary_color
+    color: #fafafa
+  [main_layout_table_style = 'success'] &
+    background-color: $success_color
+    color: #fafafa
+  [main_layout_table_style= 'info'] &
+    background-color: $info_color
+    color: #fafafa
+  [main_layout_table_style= 'warning'] &
+    background-color: $warning_color
+    color: #fafafa
+  [main_layout_table_style= 'danger'] &
+    background-color: $danger_color
+    color: #fafafa
+  [main_layout_table_style= 'light'] &
+    background-color: $light_color
+    color: #6c757d
+  [main_layout_table_style= 'dark'] &
+    background-color: $dark_color
+    color: #fafafa
+
+
+.main_layout_slideBar
+  padding: 15px
+  position: fixed
+  display: flex
+  z-index: 5
+  right: 0
+  height: calc(100vh - 60px)
+  background: #fff
+  border-left: 2px solid rgba(48,53,73,0.28)
+  color: #FF9900
+  transition: all 0.5s
+  width: 370px
+  @include set_slide_Bar_width($slide_bar_close_width)
+.main_layout_slideBar_switch
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  position: absolute
+  //display: block
+  left: -55px
+  width: 55px
+  height: 55px
+  top: calc(50vh - 80px)
+  border-radius: 50% 0 0 50%
+  background: #01a9ac
+.main_layout_slideBar_header_theme
+.main_layout_slideBar_header_theme_common
+  cursor: pointer
+  margin-left: 10px
+  overflow: hidden
+  width: 50px
+  height: 40px
+  border-radius: 4px
+  display: inline-block
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.33)
+  .head
+    height: 10px
+    background-color: #fff
+    width: 100%
+  .right
+    padding-left: 30%
+  .main
+    height: 30px
+    background-color: rgb(246, 247, 251)
+    width: 100%
+.main_layout_slideBar_header_brand_theme
+.main_layout_slideBar_header_brand_theme_common
+  cursor: pointer
+  margin-left: 10px
+  overflow: hidden
+  width: 50px
+  height: 40px
+  border-radius: 4px
+  display: inline-block
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.33)
+  .head
+    height: 10px
+    background-color: #fff
+    width: 100%
+  .left
+    width: 30%
+    left: 0
+  .main
+    height: 30px
+    background-color: rgb(246, 247, 251)
+    width: 100%
+
+.main_layout_slideBar_menu_theme
+.main_layout_slideBar_menu_theme_common
+  cursor: pointer
+  margin-left: 10px
+  overflow: hidden
+  width: 50px
+  height: 40px
+  border-radius: 4px
+  display: inline-block
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.33)
+  .head
+    height: 10px
+    background-color: #fff
+    width: 100%
+  .main
+    height: 30px
+    background-color: rgb(246, 247, 251)
+    width: 70%
+    margin-left: 30%
+.main_layout_slideBar_menuItem_common
+  cursor: pointer
+  margin-left: 10px
+  overflow: hidden
+  width: 40px
+  height: 60px
+  border-radius: 4px
+  display: inline-block
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.33)
+.main_layout_slideBar_menuItem_color
+  cursor: pointer
+  margin-left: 10px
+  overflow: hidden
+  width: 20px
+  height: 20px
+  border-radius: 4px
+  display: inline-block
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.33)
+.main_layout_slideBar_table_theme
+.main_layout_slideBar_table_theme_common
+  cursor: pointer
+  margin-left: 10px
+  overflow: hidden
+  width: 50px
+  height: 40px
+  border-radius: 4px
+  display: inline-block
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.33)
+  .head
+    height: 10px
+    width: 100%
+  .main
+    display: grid
+    height: 30px
+    background-color: #fff
+    width: 100%
+
+.main_layout_header_left
+  @include set_main_layout_head_brand_color($info_color)
+  display: flex
+  align-items: center
+.main_layout_header_right
+  @include set_main_layout_head_color($info_color)
+.main_layout_menu
+  @include set_main_layout_menu_color($light_color)
+.main_layout_menuItem
+  @include set_main_layout_menuItem_style($roundedRectangle)
+
+.el-table th
+  @include set_main_layout_table_color($light_color)
+
+
+//$blue_color: #007bff
+//$red_color: #dc3545
+//$yellow_color: #ffc107
+//$green_color: #28a745
+//$cyan_color: #17a2b8
+//$gray_color: #6c757d
+//$gray-dark_color: #343a40
+//background-color: #404E67
+
+//@include set_main_layout_menuItem_backGround($light_color)
+
+//.secondLevelItem
+//    border-radius: $menuItemBorderRadius
+//    [main_layout_menuItem_style= 'rectangle'] &
+//      border-radius: $rectangle
+//    [main_layout_menuItem_style= 'roundedRectangle'] &
+//      border-radius: $roundedRectangle
+//    [main_layout_menuItem_style= 'halfRoundedRectangle'] &
+//      border-radius: $halfRoundedRectangle
+
+//@mixin set_main_layout_menuItem_backGround($menuItemBackground)
+//  [main_layout_menuItem_backGround]
+//    li
+//      span
+//        &:hover
+//          background: $menuItemBackground
+//      .active
+//        background: $menuItemBackground
+//      .secondLevelItem
+//        background: $menuItemBackground

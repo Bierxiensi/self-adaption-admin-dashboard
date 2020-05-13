@@ -1,0 +1,61 @@
+.main_layout_menuItem
+  padding: 0.6em
+  line-height: 40px
+  li
+    list-style: none
+    span
+      display: inline-block
+      font-size: 14px
+      width: 100%
+      cursor: pointer
+      &:hover
+        background: rgba(0, 0, 0, 0.2)
+      .folderIcon
+        position: absolute
+        right: 22px
+    .active
+      background: rgba(0, 0, 0, 0.2)
+
+.firstLevelItem
+  padding: 0 20px
+  font-size: 18px
+
+.secondLevelItem
+  overflow: hidden
+  cursor: pointer
+  margin: 0 20px
+
+.thirdLevelItem
+  padding-left: 20px
+  &:hover
+    color: #ffffff
+
+
+
+.ripple
+  position: relative
+  //隐藏溢出的径向渐变背景 111111222222111111
+  overflow: hidden
+
+.ripple:after
+  content: ""
+  display: block
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  pointer-events: none
+  //设置径向渐变 circle
+  background-image: radial-gradient(circle, #666 10%, transparent 10.01%)
+  background-repeat: no-repeat
+  background-position: 50%
+  transform: scale(15, 15)
+  opacity: 0
+  transition: transform .5s, opacity .7s
+
+.ripple:active:after
+  transform: scale(0, 0)
+  opacity: .5
+  //设置初始状态
+  transition: 0s
