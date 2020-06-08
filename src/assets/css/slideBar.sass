@@ -1,5 +1,5 @@
 $slide_bar_width: 0 /* 展开宽度*/
-$slide_bar_close_width: -400px /* 关闭宽度*/
+$slide_bar_close_width: -370px /* 关闭宽度*/
 $orange-liner: linear-gradient(to right,#fe9365,#feb798)
 $green-liner: linear-gradient(to right,#0ac282,#0df3a3)
 $red-liner: linear-gradient(to right,#fe5d70,#fe909d)
@@ -105,7 +105,7 @@ $halfRoundedRectangle: 1.5em 0 1.5em 0
         &:hover
           background: rgba(0, 0, 0, 0.2)
       .active
-        background: rgba(0, 0, 0, 0.2)
+        //background: rgba(0, 0, 0, 0.2)
         .thirdLevelItem
           &:hover
             color: $white_color
@@ -219,6 +219,12 @@ $halfRoundedRectangle: 1.5em 0 1.5em 0
     background-color: $dark_color
     color: #fafafa
 
+
+@mixin set_menu_collapse
+  [menu_collapse = 'true'] &
+    width: 64px
+  [menu_collapse = 'false'] &
+    width: 64px
 
 .main_layout_slideBar
   padding: 15px
@@ -353,6 +359,13 @@ $halfRoundedRectangle: 1.5em 0 1.5em 0
 .main_layout_menu
   @include set_main_layout_menu_color($light_color)
 .main_layout_menuItem
+  li
+    //border: 1px solid blue
+    span
+      left: 0
+      //overflow: hidden
+      text-overflow: clip
+  @include set_menu_collapse()
   @include set_main_layout_menuItem_style($roundedRectangle)
 
 .el-table th

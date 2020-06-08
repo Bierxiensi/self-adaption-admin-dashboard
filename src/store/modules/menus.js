@@ -10,7 +10,9 @@ import account from '@/assets/svg/account.svg'
 import gold from '@/assets/svg/gold.svg'
 import bank from '@/assets/svg/bank.svg'
 const state = {
-    menuLists: [
+    secondMenuList: [],
+    thirdMenuList: [],
+    menuList: [
     {
         id: 1,
         name: '菜单1',
@@ -23,6 +25,17 @@ const state = {
                 id: 111,
                 name: '菜单1-1-1',
                 image: folder
+                // ,
+                // children: [{
+                //     id: 1111,
+                //     name: '菜单1-1-1-1',
+                //     image: folder
+                // },
+                // {
+                //     id: 1112,
+                //     name: '菜单1-1-1-2',
+                //     image: folder
+                // }]
             },
             {
                 id: 112,
@@ -32,16 +45,16 @@ const state = {
         },
         {
             id: 12,
-            name: '菜单1-1',
+            name: '菜单1-2',
             image: cheque,
             children:[{
                 id: 111,
-                name: '菜单1-1-1',
+                name: '菜单1-2-1',
                 image: folder
             },
             {
                 id: 112,
-                name: '菜单1-1-2',
+                name: '菜单1-2-2',
                 image: percentage
             }]
         }]
@@ -80,12 +93,26 @@ const state = {
         id: 4,
         name: '菜单4',
         image: chart
-    }]
+    }],
+    firstIndex: '',
+    secondIndex: ''
 }
 const actions = {}
 const mutations = {
     SET_MENU_LISTS (state, payload) {
-        state.menuLists = payload
+        state.menuList = payload
+    },
+    SET_FIRST_ITEM_INDEX (state, payload) {
+        state.firstIndex = payload
+    },
+    SET_SECOND_ITEM_INDEX (state, payload) {
+        state.secondIndex = payload
+    },
+    SET_SECOND_MENU_LIST (state, payload) {
+        state.secondMenuList = payload
+    },
+    SET_THIRD_MENU_LIST (state, payload) {
+        state.thirdMenuList = payload
     }
 }
 export default {

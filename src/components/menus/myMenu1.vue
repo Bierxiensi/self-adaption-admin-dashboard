@@ -1,6 +1,6 @@
 <template>
 <div>
-    <my-menu :menu-lists="menuLists"/>
+    <my-menu :menu-lists="menuList" :collapse="isCollapse"/>
 </div>
 </template>
 
@@ -11,7 +11,12 @@ export default {
     name: "myMenu1",
     components: {MyMenu},
     computed: {
-        ...mapState('menus', ['menuLists'])
+        ...mapState('menus', ['menuList'])
+    },
+    data () {
+        return{
+            isCollapse: true
+        }
     }
 }
 </script>

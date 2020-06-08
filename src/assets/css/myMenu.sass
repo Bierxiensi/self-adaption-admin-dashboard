@@ -3,8 +3,9 @@
   line-height: 40px
   li
     list-style: none
+    margin-bottom: 10px
     span
-      display: inline-block
+      display: block
       font-size: 14px
       width: 100%
       cursor: pointer
@@ -13,6 +14,9 @@
       .folderIcon
         position: absolute
         right: 22px
+    .sec-active
+      color: white
+      background: rgba(0, 0, 0, 0.2)
     .active
       background: rgba(0, 0, 0, 0.2)
 
@@ -23,14 +27,12 @@
 .secondLevelItem
   overflow: hidden
   cursor: pointer
-  margin: 0 20px
 
 .thirdLevelItem
-  padding-left: 20px
+  //position: relative
   &:hover
-    color: #ffffff
-
-
+    transition-duration: .2s
+    color: white
 
 .ripple
   position: relative

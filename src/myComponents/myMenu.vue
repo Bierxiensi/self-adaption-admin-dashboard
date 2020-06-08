@@ -1,55 +1,75 @@
 <template>
-<div>
-    <div class="main_layout_menuItem">
-        <li v-for="(item,index) in menuLists" :key="index">
-            <span :class="{'active':currentId === item.id}" style="border: 0px solid blue">
-                <i class="folderIcon" v-if="item.children">
-                    <el-icon class="el-icon-arrow-down" v-if="item.show"/>
-                    <el-icon class="el-icon-arrow-right" v-else/>
-                </i>
-                <div class="firstLevelItem ripple" @click="clickFirstLevelItem(item, index)">
-                   <div><img :src="item.image" alt="" style="vertical-align:middle; height: 1.5em;">{{ item.name }}</div>
-                </div>
-                 <el-collapse-transition>
-                    <!--:select="select"  && (currentId=== item.id) :currentId="item.id" style="border: 1px solid red" -->
-                    <my-tree-menus v-if="item.children && item.show" :list="showMenuLists"/>
-                 </el-collapse-transition>
-            </span>
-        </li>
+    <div>
+        <div class="main_layout_menuItem">
+            <li v-for="(item,index) in menuLists" :key="index">
+                <span :class="{'active':currentId === item.id}">
+                    <i class="folderIcon" v-if="item.children">
+                        <el-icon class="el-icon-arrow-down" v-if="item.show"/>
+                        <el-icon class="el-icon-arrow-right" v-else/>
+                    </i>
+                    <div class="firstLevelItem ripple" @click="clickFirstLevelItem(item)">
+                        <div><img :src="item.image" alt="" style="vertical-align:middle; height: 1.5em;">{{ item.name }}</div>
+                    </div>
+                     <el-collapse-transition>
+                        <second-item v-if="item.children && item.show"/>
+                     </el-collapse-transition>
+                </span>
+            </li>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
-import myTreeMenus from "@/components/tree/myTreeMenus";
+// import myTreeMenus from "@/components/tree/myTreeMenus";
+import secondItem from "@/components/tree/secondItem";
 export default {
     name: "myMenu",
-    components: { myTreeMenus },
+    components: { secondItem },
     props:{
-        menuLists: Array
+        menuLists: Array,
+        collapse: Boolean
     },
     data(){
         return{
-            showMenuLists: [],
+            secondMenuList: [],
             currentId: 1
+        }
+    },
+    watch: {
+        collapse() {
+            if(this.collapse === true){
+                window.document.documentElement.setAttribute( "menu_collapse", 'true' );
+            } else {
+                window.document.documentElement.setAttribute( "menu_collapse", 'false' );
+            }
+            console.log(this.collapse)
         }
     },
     methods:{
         clickFirstLevelItem(item){
-            this.menuLists.forEach(menuItem => {
-                if(menuItem !== item){
-                    menuItem.show = false
+            if(!item.children){
+                this.$router.push('/' + item.id)
+            } else {
+                this.menuLists.forEach(menuItem => {
+                    if(menuItem !== item){
+                        menuItem.show = false
+                    }
+                })
+                this.currentId = item.id
+                item.show = !item.show
+                if(item.show === true && item.children){
+                    this.secondMenuList = item.children
+                    this.secondMenuList = this.secondMenuList.map(item => ({secondLevel: true, ...item}))
+                    this.$store.commit('menus/SET_SECOND_MENU_LIST', JSON.parse(JSON.stringify(this.secondMenuList)))
+                } else if (item.show === false){
+                    this.secondMenuList = []
+                    this.$store.commit('menus/SET_SECOND_MENU_LIST', JSON.parse(JSON.stringify('[]')))
                 }
-            })
-            this.currentId = item.id
-            item.show = !item.show
-            if(item.show === true){
-                this.showMenuLists = item.children
-            } else if (item.show === false){
-                this.showMenuLists = []
+                console.log(57, 'clickFirstItem', item, this.secondMenuList)
+                this.$store.commit('menus/SET_FIRST_ITEM_INDEX', JSON.parse(JSON.stringify(item.id)))
+                this.$store.commit('menus/SET_MENU_LISTS', JSON.parse(JSON.stringify(this.menuLists)))
+                // window.document.documentElement.setAttribute( "main_layout_color", mainLayoutColor );
             }
-            this.$store.commit('menus/SET_MENU_LISTS', JSON.parse(JSON.stringify(this.menuLists)))
-            // window.document.documentElement.setAttribute( "main_layout_color", mainLayoutColor );
         }
     }
 }

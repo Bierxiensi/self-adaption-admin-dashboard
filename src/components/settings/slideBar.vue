@@ -4,7 +4,7 @@
             <h4>Adminty Customizer</h4>
             <hr>
             <!--calc(100vh - 440px)-->
-            <div style="padding: 10px; background-color: #f6f7fb; height: calc(100vh - 440px); overflow: auto">
+            <div style="padding: 10px; background-color: #f6f7fb; height: 90%; overflow: auto">
                 <span>Live customizer with tons of options</span>
                 <h5>Header Brand color</h5>
                 <div class="main_layout_slideBar_header_brand_theme">
